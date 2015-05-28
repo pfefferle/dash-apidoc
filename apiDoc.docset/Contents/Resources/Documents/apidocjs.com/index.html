@@ -1,0 +1,1644 @@
+<!DOCTYPE html>
+<html><!-- Mirrored from apidocjs.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 May 2015 20:57:32 GMT --><!-- Added by HTTrack --><head><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+
+    <title>apiDoc - Inline Documentation for RESTful web APIs</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+    
+    <link href="css/easy-responsive-tabs.css" media="screen" rel="stylesheet"/>
+    <link href="css/style.css" media="screen" rel="stylesheet"/>
+    <link href="img/favicon.ico" rel="icon" type="image/x-icon"/>
+</head>
+<body>
+
+<nav class="nav-top">
+    <a href="https://github.com/apidoc/apidoc" id="forkme"></a>
+    <ul role="list">
+        <li role="listitem"><a href="#demo">Demo</a></li>
+        <li role="listitem"><a href="#getting-started">Getting started</a></li>
+        <li role="listitem"><a href="#examples">Examples</a></li>
+        <li role="listitem"><a href="#params">APIDOC-Params</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+
+<header role="banner">
+    <h1>APIDOC</h1>
+    <h2>Inline Documentation for RESTful web APIs</h2>
+    <h3>apiDoc creates a documentation from API annotations in your source code.</h3>
+    
+    
+</header>
+
+<div id="main">
+    <aside>
+        <nav class="nav-main" role="navigation">
+            <ul role="list">
+                <li class="nav-header" role="listitem"><a href="#demo">Demo</a></li>
+                <li class="nav-header" role="listitem"><a href="#getting-started">Getting started</a></li>
+                <li role="listitem"><a href="#preface">Preface</a></li>
+                <li role="listitem"><a href="#install">Install</a></li>
+                <li role="listitem"><a href="#run">Run</a></li>
+                <li role="listitem"><a href="#CLI">CLI</a></li>
+                <li role="listitem"><a href="#grunt-module">GRUNT Module</a></li>
+                <li role="listitem"><a href="#template">Template</a></li>
+                <li role="listitem"><a href="#extend">Extend</a></li>
+                <li role="listitem"><a href="#configuration">Configuration (apidoc.json)</a></li>
+                <li role="listitem"><a href="#headerfooter">Header / Footer</a></li>
+                <li class="nav-header" role="listitem"><a href="#examples">Examples</a></li>
+                <li role="listitem"><a href="#example-basic">Basic</a></li>
+                <li role="listitem"><a href="#example-inherit">Inherit</a></li>
+                <li role="listitem"><a href="#example-versioning">Versioning</a></li>
+                <li role="listitem"><a href="#example-full">Full example (all together)</a></li>
+                <li class="nav-header" id="nav-main-params" role="listitem"><a href="#params">apiDoc-Params</a></li>
+                <li role="listitem"><a href="#param-api">@api</a></li>
+                <li role="listitem"><a href="#param-api-define">@apiDefine</a></li>
+                <li role="listitem"><a href="#param-api-description">@apiDescription</a></li>
+                <li role="listitem"><a href="#param-api-error">@apiError</a></li>
+                <li role="listitem"><a href="#param-api-error-example">@apiErrorExample</a></li>
+                <li role="listitem"><a href="#param-api-example">@apiExample</a></li>
+                <li role="listitem"><a href="#param-api-group">@apiGroup</a></li>
+                <li role="listitem"><a href="#param-api-header">@apiHeader</a></li>
+                <li role="listitem"><a href="#param-api-header-example">@apiHeaderExample</a></li>
+                <li role="listitem"><a href="#param-api-ignore">@apiIgnore</a></li>
+                <li role="listitem"><a href="#param-api-name">@apiName</a></li>
+                <li role="listitem"><a href="#param-api-param">@apiParam</a></li>
+                <li role="listitem"><a href="#param-api-param-example">@apiParamExample</a></li>
+                <li role="listitem"><a href="#param-api-permission">@apiPermission</a></li>
+                <li role="listitem"><a href="#param-api-sample-request">@apiSampleRequest</a></li>
+                <li role="listitem"><a href="#param-api-success">@apiSuccess</a></li>
+                <li role="listitem"><a href="#param-api-success-example">@apiSuccessExample</a></li>
+                <li role="listitem"><a href="#param-api-use">@apiUse</a></li>
+                <li role="listitem"><a href="#param-api-version">@apiVersion</a></li>
+                <li class="deprecated" role="listitem"><br/><a href="deprecated.html">Deprecated params</a></li>
+            </ul>
+        </nav>
+    </aside>
+    <div id="content" role="main">
+
+<!--
+ /* ============================================================
+  * Demo
+  * ============================================================ */
+-->
+<section id="demo">
+    <h1><a class="dashAnchor" name="//apple_ref/cpp/Sample/Demo"></a>Demo</h1>
+
+    <article id="demo-ouput">
+        <p>This is an example documentation:</p>
+        <a href="example/index.html"><img alt="Example" class="with-border" height="171" src="img/example.png" title="Example output of a generated apidoc" width="241"/></a>
+        <p>
+            <a href="example/index.html" title="demo">watch demo output »</a><br/>
+            <a href="https://speakerdeck.com/rottmann/api-documentation" style="display: block; padding-top: 8px;" target="_blank" title="Introduction with a small example">presentation (speakerdeck.com)</a>
+        </p>
+    </article>
+</section>
+
+<!--
+ /* ============================================================
+  * Getting started
+  * ============================================================ */
+-->
+<section id="getting-started">
+    <h1><a class="dashAnchor" name="//apple_ref/cpp/Guide/Getting%20started"></a>Getting started</h1>
+
+    <article id="preface">
+        <h2><a class="dashAnchor" name="//apple_ref/cpp/Guide/Preface"></a>Preface</h2>
+        <p>All examples in this document use the <strong>Javadoc-Style</strong> (can be used in C#, Go, Dart, Java, JavaScript, PHP, TypeScript and all other Javadoc capable languages):</p>
+        <pre class="example"><code>/**
+ * This is a comment.
+ */</code></pre>
+
+        <p>For other languages use their specific multiline comment code:</p>
+
+        <p>CoffeeScript</p>
+        <pre class="example"><code>###
+This is a comment.
+###</code></pre>
+
+        <p>Erlang (% within the comment is optional)</p>
+        <pre class="example"><code>%{
+% This is a comment.
+%}</code></pre>
+
+    <p>Perl (Doxygen)</p>
+    <pre class="example"><code>#**
+# This is a comment.
+#*</code></pre>
+
+        <p>Python</p>
+        <pre class="example"><code>"""
+This is a comment.
+"""</code></pre>
+
+        <p>Ruby</p>
+        <pre class="example"><code>=begin
+This is a comment.
+=end</code></pre>
+    </article>
+
+    <article id="install">
+        <h2><a class="dashAnchor" name="//apple_ref/cpp/Guide/Install"></a>Install</h2>
+        <pre><code>npm install apidoc -g</code></pre>
+    </article>
+
+    <article id="run">
+        <h2><a class="dashAnchor" name="//apple_ref/cpp/Guide/Run"></a>Run</h2>
+        <pre><code>apidoc -i myapp/ -o apidoc/ -t mytemplate/</code></pre>
+        <p>Creates an apiDoc of all files within dir <code>myapp/</code>, uses template from dir <code>mytemplate/</code> and put all output to dir <code>apidoc/</code>.</p>
+        <p>Without any parameter, apiDoc generate a documentation from all <code>.cs</code> <code>.dart</code> <code>.erl</code> <code>.go</code> <code>.java</code> <code>.js</code> <code>.php</code> <code>.py</code> <code>.rb</code> <code>.ts</code> files in current dir (incl. subdirs) and writes the output to <code>./doc/</code>.</p>
+    </article>
+
+    <article id="CLI">
+        <h2><a class="dashAnchor" name="//apple_ref/cpp/Guide/CLI"></a>Command Line Interface</h2>
+        <p>Show command line parameters:</p>
+        <pre><code>apidoc -h</code></pre>
+
+        <p>Important parameters:</p>
+        <table>
+            <thead>
+            <tr>
+                <th>Parameter</th>
+                <th>Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="code nowrap">-f, --file-filters</td>
+                <td>
+                    RegEx-Filter to select files that should be parsed (many -f can be used). Default <code>.cs</code> <code>.dart</code> <code>.erl</code> <code>.go</code> <code>.java</code> <code>.js</code> <code>.php</code> <code>.py</code> <code>.rb</code> <code>.ts</code>.<br/>
+                    <br/>
+                    Example (parse only .js and .ts files):<br/>
+                    <code>apidoc -f ".*\\.js$" -f ".*\\.ts$"</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="code">-i, --input</td>
+                <td>
+                    Input / source dirname. Location of your project files.<br/>
+                    <br/>
+                    Example:<br/>
+                    <code>apidoc -i myapp/</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="code">-o, --output</td>
+                <td>
+                    Output dirname. Location where to put to generated documentation.<br/>
+                    <br/>
+                    Example:<br/>
+                    <code>apidoc -o apidoc/</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="code">-t, --template</td>
+                <td>
+                    Use template for output files. You can create and use your own template.<br/>
+                    <br/>
+                    Example:<br/>
+                    <code>apidoc -t mytemplate/</code>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </article>
+
+    <article id="grunt-module">
+        <h2><a class="dashAnchor" name="//apple_ref/cpp/Guide/GRUNT%20Module"></a>GRUNT Module</h2>
+        <p>
+            A separate grunt module is supported, visit <a href="https://github.com/apidoc/grunt-apidoc">github.com/apidoc/grunt-apidoc</a><br/>
+            or install via npm:
+        </p>
+        <pre><code>npm install grunt-apidoc --save-dev</code></pre>
+    </article>
+
+    <article id="template">
+        <h2><a class="dashAnchor" name="//apple_ref/cpp/Guide/Template"></a>Template</h2>
+        <p>apiDoc include a default template which uses <a href="http://handlebarsjs.com/">handlebars</a>, <a href="http://twitter.github.io/bootstrap/">Bootstrap</a>, <a href="http://requirejs.org/">RequireJS</a> and <a href="http://jquery.com/">jQuery</a> for the output of the generated <code>api_data.js</code> and <code>api_project.js</code> as a html-page.</p>
+        <p>By default the generated apiDoc use a complex Template, which support</p>
+        <ul role="list">
+            <li role="listitem">versioning: view different versions of your API</li>
+            <li role="listitem">compare: view changes between two versions of your API</li>
+        </ul>
+        <p><a href="example/index.html">view default demo</a></p>
+
+        <h3>Create your own</h3>
+        <p>You can create your own template and use the apiDoc generated files <code>api_data.js</code>, <code>api_project.js</code>, or json only files <code>api_data.json</code>, <code>api_project.json</code>.</p>
+        <p>View the source on <a href="https://github.com/apidoc/apidoc/tree/master/template">https://github.com/apidoc/apidoc/tree/master/template</a></p>
+    </article>
+
+    <article id="extend">
+        <h2><a class="dashAnchor" name="//apple_ref/cpp/Guide/Extend"></a>Extend</h2>
+        <p>apiDoc can be extended with your own parameters (if something is not available that you need). Look at <a href="https://github.com/apidoc/apidoc-core/tree/master/lib/parsers">lib/parsers/</a>, 
+            <a href="https://github.com/apidoc/apidoc-core/tree/master/lib/workers">lib/workers/</a>, and <a href="https://github.com/apidoc/apidoc-core/tree/master/lib/parsers">lib/parsers/</a> 
+            directories in the <a href="https://github.com/apidoc/apidoc-core">apidoc/apidoc-core</a> project for examples. 
+            <code>parser</code> split the parameter data, <code>worker</code> processes additional functions with all found data and <code>filter</code> reduce the data to needed things.
+        </p>
+        <p>Example usage: <code>apidoc --parse-filters myFilter=pathToMyFilter/myFilter.js</code></p>
+        <p><strong>Or <a href="https://github.com/apidoc/apidoc">fork</a> the whole project and create a pull request to make apiDoc better.</strong></p>
+    </article>
+
+  <article id="configuration">
+    <h2><a class="dashAnchor" name="//apple_ref/cpp/Guide/Configuration%20%28apidoc.json%29"></a>Configuration (apidoc.json)</h2>
+    <p>The optional <code>apidoc.json</code> in your projects root dir includes common information about your project like title, short description, version and configuration options like <a href="#headerfooter">header / footer</a> settings or template specific options.</p>
+    <p><a href="source/example_full/apidoc.json">apidoc.json</a></p>
+    <pre><code>{
+  "name": "example",
+  "version": "0.1.0",
+  "description": "apiDoc basic example",
+  "title": "Custom apiDoc browser title",
+  "url" : "https://api.github.com/v1"
+}</code></pre>
+    <p>If you use a <code>package.json</code> (e.g. in a node.js project), all <code>apidoc.json</code> settings can be done in <code>package.json</code> too, just add them under the <code>"apidoc": { }</code> parameter.</p>
+    <p>package.json</p>
+    <pre><code>{
+  "name": "example",
+  "version": "0.1.0",
+  "description": "apiDoc basic example",
+  "apidoc": {
+    "title": "Custom apiDoc browser title",
+    "url" : "https://api.github.com/v1",
+  }
+}</code></pre>
+
+    <h3 id="configuration-settings">Settings for apidoc.json</h3>
+    <table>
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td class="code">name</td>
+        <td>Name of your project.<br/>If no <code>apidoc.json</code> with the field exists, then apiDoc try to determine the the value from <code>package.json</code>.</td>
+      </tr>
+      <tr>
+        <td class="code">version</td>
+        <td>Version of your project.<br/>If no <code>apidoc.json</code> with the field exists, then apiDoc try to determine the the value from <code>package.json</code>.</td>
+      </tr>
+      <tr>
+        <td class="code">description</td>
+        <td>Introduction of your project.<br/>If no <code>apidoc.json</code> with the field exists, then apiDoc try to determine the the value from <code>package.json</code>.</td>
+      </tr>
+      <tr>
+        <td class="code">title</td>
+        <td>Browser title text.</td>
+      </tr>
+      <tr>
+        <td class="code">url</td>
+        <td>Prefix for api path (endpoints), e.g. <code>https://api.github.com/v1<code></code></code></td>
+      </tr>
+      <tr>
+        <td class="code" id="configuration-settings-sample-url">sampleUrl</td>
+        <td>If set, a form to test an api method (send a request) will be visible. See <a href="#param-api-sample-request">@apiSampleRequest</a> for more details.</td>
+      </tr>
+
+      <tr>
+        <td class="code" colspan="2">header</td>
+      </tr>
+      <tr>
+        <td class="code">    title</td>
+        <td>Navigation text for the included header.md file.<br/>(watch <a href="#headerfooter">Header / Footer</a>)</td>
+      </tr>
+      <tr>
+        <td class="code">    filename</td>
+        <td>Filename (markdown-file) for the included header.md file.</td>
+      </tr>
+
+      <tr>
+        <td class="code" colspan="2">footer</td>
+      </tr>
+      <tr>
+        <td class="code">    title</td>
+        <td>Navigation text for the included footer.md file.</td>
+      </tr>
+      <tr>
+        <td class="code">    filename</td>
+        <td>Filename (markdown-file) for the included footer.md file.</td>
+      </tr>
+
+      <tr>
+        <td class="code">order</td>
+        <td>A list of api-names / group-names for ordering the output. Not defined names are automatically displayd last.<br/>
+<pre><code>"order": [
+  "Error",
+  "Define",
+  "PostTitleAndError",
+  "PostError"
+]</code></pre>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+    <h3 id="configuration-template-settings">Template specific settings</h3>
+    <p>The following settings are specific for the default template of apiDoc.</p>
+    <table>
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td class="code" colspan="3">template</td>
+      </tr>
+      <tr>
+        <td class="code">    withCompare</td>
+        <td class="code">Boolean</td>
+        <td>Enable comparison with older api versions. Default: <code>true</code></td>
+      </tr>
+      <tr>
+        <td class="code">    withGenerator</td>
+        <td class="code">Boolean</td>
+        <td>Output the generator information at the footer. Default: <code>true</code></td>
+      </tr>
+      <tr>
+        <td class="code">    jQueryAjaxSetup</td>
+        <td class="code">Object</td>
+        <td>Set <a href="http://api.jquery.com/jquery.ajaxsetup/">default values</a> for Ajax requests.</td>
+      </tr>
+      </tbody>
+    </table>
+  </article>
+
+  <article id="headerfooter">
+    <h2><a class="dashAnchor" name="//apple_ref/cpp/Guide/Header%20%2F%20Footer"></a>Header / Footer</h2>
+    <p>In your projects <code>apidoc.json</code> you can add a header and footer.</p>
+    <p>The title will be visible in the navigation. The filename should be a markdown textfile.</p>
+    <p><a href="source/example_full/apidoc.json">apidoc.json</a></p>
+    <pre><code>{
+  "header": {
+    "title": "My own header title",
+    "filename": "header.md"
+  },
+  "footer": {
+    "title": "My own footer title",
+    "filename": "footer.md"
+  }
+}</code></pre>
+  </article>
+</section>
+
+<!--
+ /* ============================================================
+  * Examples
+  * ============================================================ */
+-->
+<section id="examples">
+    <h1><a class="dashAnchor" name="//apple_ref/cpp/Sample/Examples"></a>Examples</h1>
+
+    <p>An introduction Presentation with a small example can be found at <a href="https://speakerdeck.com/rottmann/api-documentation" target="_blank" title="Introduction with a small example">speakerdeck.com</a>.</p>
+
+    <article id="example-basic">
+        <h2><a class="dashAnchor" name="//apple_ref/cpp/Sample/Basic"></a>Basic</h2>
+        <p>In this basic example we have a small project file and an apidoc.json.</p>
+        <p><a href="example_basic/index.html">View example output</a></p>
+        <p><br/></p>
+
+        <p><a href="source/example_basic/apidoc.json">apidoc.json</a></p>
+        <pre><code>{
+  "name": "example",
+  "version": "0.1.0",
+  "description": "A basic apiDoc example"
+}</code></pre>
+        <p>From <code>apidoc.json</code> apiDoc get the name, version and description of your project.<br/>
+        The file is <code>optional</code> (it depend on your template if the data is required).</p>
+        <p><br/></p>
+
+        <p><a href="source/example_basic/example.js">example.js</a></p>
+        <pre><code>/**
+ * <code class="important">@api {get} /user/:id Request User information</code>
+ * <code class="important">@apiName GetUser</code>
+ * <code class="important">@apiGroup User</code>
+ *
+ * @apiParam {Number} id Users unique ID.
+ *
+ * @apiSuccess {String} firstname Firstname of the User.
+ * @apiSuccess {String} lastname  Lastname of the User.
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {
+ *       "firstname": "John",
+ *       "lastname": "Doe"
+ *     }
+ *
+ * @apiError UserNotFound The <code>id</code> of the User was not found.
+ *
+ * @apiErrorExample Error-Response:
+ *     HTTP/1.1 404 Not Found
+ *     {
+ *       "error": "UserNotFound"
+ *     }
+ */</code></pre>
+
+        <p>A documentation block starts with <code>/**</code> and end with <code>*/</code>.</p>
+        <p>This example describes a <code>GET</code> Method to request the User Information by the users <code>id</code>.</p>
+        <p><code>@api {get} /user/:id Request User information</code> is required, without <code>@api</code> apiDoc ignores a documentation block.</p>
+        <p><code>@apiName</code> is a <code>unique</code> name and should always be used.<br/>
+        Format: <i>method</i> + <i>path</i> (e.g. Get + User)</p>
+        <p><code>@apiGroup</code> should always be used, under that name will this method be grouped.</p>
+        <p>All other fields are optional, look at their description under <a href="#params">apiDoc-Params</a>.</p>
+    </article>
+
+<!-- ============================================================ -->
+
+    <article id="example-inherit">
+        <h2><a class="dashAnchor" name="//apple_ref/cpp/Sample/Inherit"></a>Inherit</h2>
+        <p>Inherit mean, that you can define parts of your documentation that shall be used many times.</p>
+        <p><a href="example_inherit/index.html">View example output</a></p>
+        <p><br/></p>
+
+        <p><a href="source/example_inherit/apidoc.json">apidoc.json</a></p>
+        <pre><code>{
+  "name": "example-inherit",
+  "version": "0.1.0",
+  "description": "apiDoc inherit example"
+}</code></pre>
+        <p><br/></p>
+
+        <p><a href="source/example_inherit/example.js">example.js</a></p>
+        <pre><code>/**
+ * <code class="important">@apiDefine UserNotFoundError</code>
+ *
+ * @apiError UserNotFound The <code>id</code> of the User was not found.
+ *
+ * @apiErrorExample Error-Response:
+ *     HTTP/1.1 404 Not Found
+ *     {
+ *       "error": "UserNotFound"
+ *     }
+ */
+
+/**
+ * @api {get} /user/:id Request User information
+ * @apiName GetUser
+ * @apiGroup User
+ *
+ * @apiParam {Number} id Users unique ID.
+ *
+ * @apiSuccess {String} firstname Firstname of the User.
+ * @apiSuccess {String} lastname  Lastname of the User.
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {
+ *       "firstname": "John",
+ *       "lastname": "Doe"
+ *     }
+ *
+ * <code class="important">@apiUse UserNotFoundError</code>
+ */
+
+/**
+ * @api {put} /user/ Modify User information
+ * @apiName PutUser
+ * @apiGroup User
+ *
+ * @apiParam {Number} id          Users unique ID.
+ * @apiParam {String} [firstname] Firstname of the User.
+ * @apiParam {String} [lastname]  Lastname of the User.
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *
+ * <code class="important">@apiUse UserNotFoundError</code>
+ */</code></pre>
+        <p>
+            In this case a block named <code>UserNotFoundError</code> is defined with <code>@apiDefine</code>.<br/>
+            That block could be used many times with <code>@apiUse UserNotFoundError</code>.
+        </p>
+        <p>In the generated output, both methods <code>GET and PUT</code> will have the complete UserNotFoundError documentation.</p>
+        <p><br/></p>
+        <p>
+            Inherit define commands is <code>apiDefine</code>.<br/>
+            Use name is <code>apiUse</code>.
+            <code>apiGroup</code> and <code>apiPermission</code> are use commands to, but in their context the not inherit parameters, only title and description (in combination with apiVersion).
+        </p>
+        <p><strong>Inheritation only works with 1 parent</strong>, more levels would make the inline code unreadable and changes really complex.</p>
+    </article>
+
+<!-- ============================================================ -->
+
+    <article id="example-versioning">
+        <h2><a class="dashAnchor" name="//apple_ref/cpp/Sample/Versioning"></a>Versioning</h2>
+        <p>Nice feature is the keeping of previous defined documentation blocks. That makes it possible to compare a methods version with its predecessor. Frontend Developer can thus simply see what have changed and modify their code.</p>
+        <p><a href="example_versioning/index.html">View example output</a></p>
+        <p>In the example, click top right on select box (the main version) and select <code>Compare all with predecessor</code>.</p>
+        <ul role="list">
+            <li role="listitem">The main navigation mark all changed methods with a green bar.</li>
+            <li role="listitem">Each method show the difference to its predecessor.</li>
+            <li role="listitem">Green marks contents that were added (in this case title text changed and field <code>registered</code> was added).</li>
+            <li role="listitem">Red marks contents that were removed.</li>
+        </ul>
+        <p>You can change the main version (top right) to a previous version and compare older methods with their predecessor.</p>
+        <p><br/></p>
+
+        <p><a href="source/example_inherit/apidoc.json">apidoc.json</a></p>
+        <pre><code>{
+  "name": "example-versioning",
+  "version": "0.2.0",
+  "description": "apiDoc versioning example"
+}</code></pre>
+        <p><br/></p>
+
+        <p>So that your code not blow out with documentation blocks, i prefer to use a separate history file named <code>_apidoc.js</code>. Before you change your documentation block, copy the old block to to this file, that's all.</p>
+        <p><a href="source/example_versioning/_apidoc.js">_apidoc.js</a></p>
+        <pre><code>/**
+ * @api {get} /user/:id Get User information
+ * <code class="important">@apiVersion 0.1.0</code>
+ * @apiName GetUser
+ * @apiGroup User
+ *
+ * @apiParam {Number} id Users unique ID.
+ *
+ * @apiSuccess {String} firstname Firstname of the User.
+ * @apiSuccess {String} lastname  Lastname of the User.
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {
+ *       "firstname": "John",
+ *       "lastname": "Doe"
+ *     }
+ *
+ * @apiError UserNotFound The <code>id</code> of the User was not found.
+ *
+ * @apiErrorExample Error-Response:
+ *     HTTP/1.1 404 Not Found
+ *     {
+ *       "error": "UserNotFound"
+ *     }
+ */</code></pre>
+
+        <p><a href="source/example_versioning/example.js">example.js</a> (your current project file)</p>
+        <pre><code>/**
+ * @api {get} /user/:id Get User information and Date of Registration.
+ * <code class="important">@apiVersion 0.2.0</code>
+ * @apiName GetUser
+ * @apiGroup User
+ *
+ * @apiParam {Number} id Users unique ID.
+ *
+ * @apiSuccess {String} firstname  Firstname of the User.
+ * @apiSuccess {String} lastname   Lastname of the User.
+ * @apiSuccess {Date}   registered Date of Registration.
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {
+ *       "firstname": "John",
+ *       "lastname": "Doe"
+ *     }
+ *
+ * @apiError UserNotFound The <code>id</code> of the User was not found.
+ *
+ * @apiErrorExample Error-Response:
+ *     HTTP/1.1 404 Not Found
+ *     {
+ *       "error": "UserNotFound"
+ *     }
+ */</code></pre>
+        <p>Important is to set the version with <code>@apiVersion</code> on every documentation block.</p>
+        <p><br/></p>
+        <p>The version can be used on every block, also on inherit blocks. You don't have to change the version on an inherit block, the parser check automatically for the nearest predecessor.</p>
+    </article>
+
+<!-- ============================================================ -->
+
+    <article id="example-full">
+        <h2><a class="dashAnchor" name="//apple_ref/cpp/Sample/Full%20example%20%28all%20together%29"></a>Full example (all together)</h2>
+        <p>This is a complex example with <code>inherit</code>, <code>versioning</code>, <code>API.md</code> file and history file <code>_apidoc.js</code>, explanation is within code and generated documentation.</p>
+        <p><a href="example/index.html">View example output</a></p>
+        <p><br/></p>
+        <p>Files:</p>
+        <ul role="list">
+            <li role="listitem"><a href="source/example_full/_apidoc.js">_apidoc.js</a></li>
+            <li role="listitem"><a href="source/example_full/API.html">API.md</a></li>
+            <li role="listitem"><a href="source/example_full/example.js">example.js</a></li>
+            <li role="listitem"><a href="source/example_full/apidoc.json">apidoc.json</a></li>
+        </ul>
+    </article>
+</section>
+
+<!--
+ /* ============================================================
+  * Params
+  * ============================================================ */
+-->
+<section id="params">
+    <h1><a class="dashAnchor" name="//apple_ref/cpp/Parameter/apiDoc-Params"></a>apiDoc-Params</h1>
+    <p>Structure parameter like:</p>
+    <ul role="list">
+        <li role="listitem"><code>@apiDefine</code></li>
+    </ul>
+    <p>is used to define a documentation block as a draft. This drafts can be included in normal api documentation blocks. With drafts you can separate complex or recurrent blocks.</p>
+    <p>A defined block can have all params (like <code>@apiParam</code>), <strong>except other defined blocks</strong>.</p>
+
+    <article id="param-api">
+        <h2><a class="dashAnchor" name="//apple_ref/cpp/Parameter/%40api"></a>@api</h2>
+        <pre><code>@api {method} path [title]</code></pre>
+        <p><strong>Required!</strong></p>
+        <p>Without that indicator, apiDoc parser ignore the documentation block.</p>
+        <p>Except definition blocks like <code>@apiDefine</code>, they not need <code>@api</code>.</p>
+        <p>Usage: <code>@api {get} /user/:id Users unique ID.</code></p>
+
+        <table>
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="code">method</td>
+                <td>
+                    Request method name: <code>DELETE</code>, <code>GET</code>, <code>POST</code>, <code>PUT</code>, ...<br/>
+                    More info <a href="http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods">Wikipedia HTTP-Request_methods</a>
+                </td>
+            </tr>
+            <tr>
+                <td class="code">path</td>
+                <td>Request Path.</td>
+            </tr>
+            <tr>
+                <td class="code">title <span class="label label-optional">optional</span></td>
+                <td>A short title. (used for navigation and article header)</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <p>Example:</p>
+        <pre class="example"><code>/**
+ * @api {get} /user/:id
+ */</code></pre>
+    </article>
+
+<!-- ============================================================ -->
+
+    <article id="param-api-define">
+        <h2><a class="dashAnchor" name="//apple_ref/cpp/Parameter/%40apiDefine"></a>@apiDefine</h2>
+        <pre><code>@apiDefinePermission name [title]
+                     [description]</code></pre>
+        <p>Defines a permission as a draft to be used in <code>@api</code> blocks or in an api function like <code>@apiPermission</code>.</p>
+        <p><code>@apiDefine</code> can only be used once per block</p>
+        <p>With <code>@apiUse</code> a defined block will be imported, or with the name the title and description will be used.</p>
+        <p>Usage: <code>@apiDefine MyError</code></p>
+
+        <table>
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="code">name</td>
+                <td>
+                    Unique name for the block / value.<br/>
+                    Same name with different <code>@apiVersion</code> can be defined.
+                </td>
+            </tr>
+            <tr>
+                <td class="code">title <span class="label label-optional">optional</span></td>
+                <td>
+                    A short title. Only used for named functions like <code>@apiPermission</code> or <code>@apiParam (name)</code>.
+                </td>
+            </tr>
+            <tr>
+                <td class="code">description <span class="label label-optional">optional</span></td>
+                <td>
+                    Detailed Description start at the next line, multiple lines can be used. Only used for named functions like <code>@apiPermission</code>.
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <p>Example:</p>
+        <pre class="example"><code>/**
+ * @apiDefine MyError
+ * @apiError UserNotFound The &lt;code&gt;id&lt;/code&gt; of the User was not found.
+ */
+
+/**
+ * @api {get} /user/:id
+ * @apiUse MyError
+ */</code></pre>
+
+        <pre class="example"><code>/**
+ * @apiDefine admin User access only
+ * This optional description belong to to the group admin.
+ */
+
+/**
+ * @api {get} /user/:id
+ * @apiPermission admin
+ */</code></pre>
+        <p>For more watch <a href="#example-inherit">inherit example</a>.</p>
+    </article>
+
+<!-- ============================================================ -->
+
+    <article id="param-api-description">
+        <h2><a class="dashAnchor" name="//apple_ref/cpp/Parameter/%40apiDescription"></a>@apiDescription</h2>
+        <pre><code>@apiDescription text</code></pre>
+        <p>Detailed description of the API Method.</p>
+        <p>Usage: <code>@apiDescription This is the Description.</code></p>
+
+        <table>
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="code">text</td>
+                <td>Multiline description text.</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <p>Example:</p>
+        <pre class="example"><code>/**
+ * @apiDescription This is the Description.
+ * It is multiline capable.
+ *
+ * Last line of Description.
+ */
+</code></pre>
+    </article>
+
+<!-- ============================================================ -->
+
+    <article id="param-api-error">
+        <h2><a class="dashAnchor" name="//apple_ref/cpp/Parameter/%40apiError"></a>@apiError</h2>
+        <pre><code>@apiError [(group)] [{type}] field [description]</code></pre>
+        <p>Error return Parameter.</p>
+        <p>Usage: <code>@apiError UserNotFound</code></p>
+
+        <table>
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="code">(group)<span class="label label-optional">optional</span></td>
+                <td>
+                    All parameters will be grouped by this name.<br/>
+                    Without a group, the default <code>Error 4xx</code> is set.<br/>
+                    You can set a title and description with <a href="#param-api-define">@apiDefine</a>.
+                </td>
+            </tr>
+            <tr>
+                <td class="code">{type}<span class="label label-optional">optional</span></td>
+                <td>
+                    Return type, e.g. <code>{Boolean}</code>,  <code>{Number}</code>,  <code>{String}</code>,  <code>{Object}</code>, <code>{String[]}</code> (array of strings), ...
+                </td>
+            </tr>
+            <tr>
+                <td class="code">field</td>
+                <td>
+                    Return Identifier (returned error code).
+                </td>
+            </tr>
+            <tr>
+                <td class="code">description<span class="label label-optional">optional</span></td>
+                <td>
+                    Description of the field.
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <p>Example:</p>
+        <pre class="example"><code>/**
+ * @api {get} /user/:id
+ * @apiError UserNotFound The &lt;code&gt;id&lt;/code&gt; of the User was not found.
+ */</code></pre>
+    </article>
+
+<!-- ============================================================ -->
+
+    <article id="param-api-error-example">
+        <h2><a class="dashAnchor" name="//apple_ref/cpp/Parameter/%40apiErrorExample"></a>@apiErrorExample</h2>
+        <pre><code>@apiErrorExample [{type}] [title]
+                 example</code></pre>
+        <p>Example of an error return message, output as a pre-formatted code.</p>
+        <p>Usage: <code>@apiErrorExample {json} Error-Response:<br/>                 This is an example.</code></p>
+
+        <table>
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="code">type<span class="label label-optional">optional</span></td>
+                <td>
+                    Response format.
+                </td>
+            </tr>
+            <tr>
+                <td class="code">title<span class="label label-optional">optional</span></td>
+                <td>
+                    Short title for the example.
+                </td>
+            </tr>
+            <tr>
+                <td class="code">example</td>
+                <td>
+                    Detailed example, multilines capable.
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <p>Example:</p>
+        <pre class="example"><code>/**
+ * @api {get} /user/:id
+ * @apiErrorExample {json} Error-Response:
+ *     HTTP/1.1 404 Not Found
+ *     {
+ *       "error": "UserNotFound"
+ *     }
+ */</code></pre>
+    </article>
+
+<!-- ============================================================ -->
+
+    <article id="param-api-example">
+        <h2><a class="dashAnchor" name="//apple_ref/cpp/Parameter/%40apiExample"></a>@apiExample</h2>
+        <pre><code>@apiExample [{type}] title
+            example</code></pre>
+        <p>Example for usage of an API method. Output as a pre-formatted code.</p>
+        <p>Use it for a complete example at the beginning of the description of an endpoint.</p>
+        <p>Usage: <code>@apiExample {js} Example usage:<br/>            This is an example.</code></p>
+
+        <table>
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="code">type<span class="label label-optional">optional</span></td>
+                <td>
+                    Code language.
+                </td>
+            </tr>
+            <tr>
+                <td class="code">title</td>
+                <td>
+                    Short title for the example.
+                </td>
+            </tr>
+            <tr>
+                <td class="code">example</td>
+                <td>
+                    Detailed example, multilines capable.
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <p>Example:</p>
+        <pre class="example"><code>/**
+ * @api {get} /user/:id
+ * @apiExample {curl} Example usage:
+ *     curl -i http://localhost/user/4711
+ */</code></pre>
+    </article>
+
+<!-- ============================================================ -->
+
+    <article id="param-api-group">
+        <h2><a class="dashAnchor" name="//apple_ref/cpp/Parameter/%40apiGroup"></a>@apiGroup</h2>
+        <pre><code>@apiGroup name</code></pre>
+        <p><strong>Should always be used.</strong></p>
+        <p>Defines to which group the method documentation block belongs. Groups will be used for the Main-Navigation
+        in the generated output. Structure definition not need <code>@apiGroup</code>.</p>
+        <p>Usage: <code>@apiGroup User</code></p>
+
+        <table>
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="code">name</td>
+                <td>
+                    Name of the group. Also used as navigation title.
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <p>Example:</p>
+        <pre class="example"><code>/**
+ * @api {get} /user/:id
+ * @apiGroup User
+ */</code></pre>
+    </article>
+
+<!-- ============================================================ -->
+
+  <article id="param-api-header">
+    <h2><a class="dashAnchor" name="//apple_ref/cpp/Parameter/%40apiHeader"></a>@apiHeader</h2>
+    <pre><code>@apiHeader [(group)] [{type}] [field=defaultValue] [description]</code></pre>
+    <p>Describe a parameter passed to you API-Header e.g. for Authorization.</p>
+    <p class="similar-operation">Similar operation as <a href="#param-api-param">@apiParam</a>, only the output is above the parameters.</p>
+    <p>Usage: <code>@apiHeader (MyHeaderGroup) {String} authorization Authorization value.</code></p>
+
+    <table>
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td class="code">(group)<span class="label label-optional">optional</span></td>
+        <td>
+          All parameters will be grouped by this name.<br/>
+          Without a group, the default <code>Parameter</code> is set.<br/>
+          You can set a title and description with <a href="#param-api-define">@apiDefine</a>.
+        </td>
+      </tr>
+      <tr>
+        <td class="code">{type}<span class="label label-optional">optional</span></td>
+        <td>
+          Parameter type, e.g. <code>{Boolean}</code>,  <code>{Number}</code>,  <code>{String}</code>,  <code>{Object}</code>, <code>{String[]}</code> (array of strings), ...
+        </td>
+      </tr>
+      <tr>
+        <td class="code">field</td>
+        <td>
+          Variablename.
+        </td>
+      </tr>
+      <tr>
+        <td class="code">[field]</td>
+        <td>
+          Fieldname with brackets define the Variable as optional.
+        </td>
+      </tr>
+      <tr>
+        <td class="code">=defaultValue<span class="label label-optional">optional</span></td>
+        <td>
+          The parameters default value.
+        </td>
+      </tr>
+      <tr>
+        <td class="code">description<span class="label label-optional">optional</span></td>
+        <td>
+          Description of the field.
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+    <p>Examples:</p>
+    <pre class="example"><code>/**
+ * @api {get} /user/:id
+ * @apiHeader {String} access-key Users unique access-key.
+ */</code></pre>
+  </article>
+
+<!-- ============================================================ -->
+
+    <article id="param-api-header-example">
+        <h2><a class="dashAnchor" name="//apple_ref/cpp/Parameter/%40apiHeaderExample"></a>@apiHeaderExample</h2>
+        <pre><code>@apiHeaderExample [{type}] [title]
+                   example</code></pre>
+        <p>Parameter request example.</p>
+        <p>Usage: <code>@apiHeaderExample {json} Request-Example:<br/>                 { "content": "This is an example content" }</code></p>
+
+        <table>
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="code">type<span class="label label-optional">optional</span></td>
+                <td>
+                    Request format.
+                </td>
+            </tr>
+            <tr>
+                <td class="code">title<span class="label label-optional">optional</span></td>
+                <td>
+                    Short title for the example.
+                </td>
+            </tr>
+            <tr>
+                <td class="code">example</td>
+                <td>
+                    Detailed example, multilines capable.
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <p>Example:</p>
+        <pre class="example"><code>/**
+ * @api {get} /user/:id
+ * @apiHeaderExample {json} Header-Example:
+ *     {
+ *       "Accept-Encoding": "Accept-Encoding: gzip, deflate"
+ *     }
+ */</code></pre>
+    </article>
+
+<!-- ============================================================ -->
+
+    <article id="param-api-ignore">
+        <h2><a class="dashAnchor" name="//apple_ref/cpp/Parameter/%40apiIgnore"></a>@apiIgnore</h2>
+        <pre><code>@apiIgnore [hint]</code></pre>
+        <p><strong>Place it on top of a block.</strong></p>
+        <p>A block with <code>@apiIgnore</code> will not be parsed. It is usefull, if you leave outdated or not finished Methods in your source code and you don't want to publish it into the documentation.</p>
+        <p>Usage: <code>@apiIgnore Not finished Method</code></p>
+
+        <table>
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="code">hint<span class="label label-optional">optional</span></td>
+                <td>
+                    Short information why this block should be ignored.
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <p>Example:</p>
+        <pre class="example"><code>/**
+ * @apiIgnore Not finished Method
+ * @api {get} /user/:id
+ */</code></pre>
+    </article>
+
+<!-- ============================================================ -->
+
+    <article id="param-api-name">
+        <h2><a class="dashAnchor" name="//apple_ref/cpp/Parameter/%40apiName"></a>@apiName</h2>
+        <pre><code>@apiName name</code></pre>
+        <p><strong>Should always be used.</strong></p>
+        <p>Defines the name of the method documentation block. Names will be used for the Sub-Navigation in the
+        generated output. Structure definition not need <code>@apiName</code>.</p>
+        <p>Usage: <code>@apiName GetUser</code></p>
+
+        <table>
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="code">name</td>
+                <td>
+                    Unique name of the method. Same name with different <code>@apiVersion</code> can be defined.<br/>
+                    Format: <i>method</i> + <i>path</i> (e.g. Get + User), only a proposal, you can name as you want.<br/>
+                    Also used as navigation title.<br/>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <p>Example:</p>
+        <pre class="example"><code>/**
+ * @api {get} /user/:id
+ * @apiName GetUser
+ */</code></pre>
+    </article>
+
+<!-- ============================================================ -->
+
+    <article id="param-api-param">
+        <h2><a class="dashAnchor" name="//apple_ref/cpp/Parameter/%40apiParam"></a>@apiParam</h2>
+        <pre><code>@apiParam [(group)] [{type}] [field=defaultValue] [description]</code></pre>
+        <p>Describe a parameter passed to you API-Method.</p>
+        <p>Usage: <code>@apiParam (MyGroup) {Number} id Users unique ID.</code></p>
+
+        <table>
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="code">(group)<span class="label label-optional">optional</span></td>
+                <td>
+                    All parameters will be grouped by this name.<br/>
+                    Without a group, the default <code>Parameter</code> is set.<br/>
+                    You can set a title and description with <a href="#param-api-define">@apiDefine</a>.
+                </td>
+            </tr>
+            <tr>
+                <td class="code">{type}<span class="label label-optional">optional</span></td>
+                <td>
+                    Parameter type, e.g. <code>{Boolean}</code>, <code>{Number}</code>, <code>{String}</code>, <code>{Object}</code>, <code>{String[]}</code> (array of strings), ...
+                </td>
+            </tr>
+            <tr>
+                <td class="code">{type{size}}<span class="label label-optional">optional</span></td>
+                <td>
+                    Information about the size of the variable.<br/>
+                    <code>{string{..5}}</code> a string that has max 5 chars.<br/>
+                    <code>{string{2..5}}</code> a string that has min. 2 chars and max 5 chars.<br/>
+                    <code>{number{100-999}}</code> a number between 100 and 999.<br/>
+                </td>
+            </tr>
+            <tr>
+                <td class="code">{type=allowedValues}<span class="label label-optional">optional</span></td>
+                <td>
+                    Information about allowed values of the variable.<br/>
+                    <code>{string="small"}</code> a string that can only contain the word "small" (a constant).<br/>
+                    <code>{string="small","huge"}</code> a string that can contain the words "small" or "huge".<br/>
+                    <code>{number=1,2,3,99}</code> a number with allowed values of 1, 2, 3 and 99.<br/>
+                    <br/>
+                    Can be combined with size:<br/>
+                    <code>{string {..5}="small","huge"}</code> a string that has max 5 chars and only contain the words "small" or "huge".<br/>
+                </td>
+            </tr>
+            <tr>
+                <td class="code">field</td>
+                <td>
+                    Variablename.
+                </td>
+            </tr>
+            <tr>
+                <td class="code">[field]</td>
+                <td>
+                    Fieldname with brackets define the Variable as optional.
+                </td>
+            </tr>
+            <tr>
+                <td class="code">=defaultValue<span class="label label-optional">optional</span></td>
+                <td>
+                    The parameters default value.
+                </td>
+            </tr>
+            <tr>
+                <td class="code">description<span class="label label-optional">optional</span></td>
+                <td>
+                    Description of the field.
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <p>Examples:</p>
+        <pre class="example"><code>/**
+ * @api {get} /user/:id
+ * @apiParam {Number} id Users unique ID.
+ */
+
+/**
+ * @api {post} /user/
+ * @apiParam {String} [firstname]  Optional Firstname of the User.
+ * @apiParam {String} lastname     Mandatory Lastname.
+ * @apiParam {String} country="DE" Mandatory with default value "DE".
+ * @apiParam {Number} [age=18]     Optional Age with default 18.
+ *
+ * @apiParam (Login) {String} pass Only logged in users can post this.
+ *                                 In generated documentation a separate
+ *                                 "Login" Block will be generated.
+ */</code></pre>
+    </article>
+
+<!-- ============================================================ -->
+
+    <article id="param-api-param-example">
+        <h2><a class="dashAnchor" name="//apple_ref/cpp/Parameter/%40apiParamExample"></a>@apiParamExample</h2>
+        <pre><code>@apiParamExample [{type}] [title]
+                   example</code></pre>
+        <p>Parameter request example.</p>
+        <p>Usage: <code>@apiParamExample {json} Request-Example:<br/>                 { "content": "This is an example content" }</code></p>
+
+        <table>
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="code">type<span class="label label-optional">optional</span></td>
+                <td>
+                    Request format.
+                </td>
+            </tr>
+            <tr>
+                <td class="code">title<span class="label label-optional">optional</span></td>
+                <td>
+                    Short title for the example.
+                </td>
+            </tr>
+            <tr>
+                <td class="code">example</td>
+                <td>
+                    Detailed example, multilines capable.
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <p>Example:</p>
+        <pre class="example"><code>/**
+ * @api {get} /user/:id
+ * @apiParamExample {json} Request-Example:
+ *     {
+ *       "id": 4711
+ *     }
+ */</code></pre>
+    </article>
+
+<!-- ============================================================ -->
+
+    <article id="param-api-permission">
+        <h2><a class="dashAnchor" name="//apple_ref/cpp/Parameter/%40apiPermission"></a>@apiPermission</h2>
+        <pre><code>@apiPermission name</code></pre>
+        <p>Outputs the permission name. If the name is defined with <code>@apiDefine</code> the generated documentation include the additional title and description.</p>
+        <p>Usage: <code>@apiPermission admin</code></p>
+
+        <table>
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="code">name</td>
+                <td>
+                    Unique name of the permission.
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <p>Example:</p>
+        <pre class="example"><code>/**
+ * @api {get} /user/:id
+ * @apiPermission none
+ */</code></pre>
+    </article>
+
+<!-- ============================================================ -->
+
+  <article id="param-api-sample-request">
+    <h2><a class="dashAnchor" name="//apple_ref/cpp/Parameter/%40apiSampleRequest"></a>@apiSampleRequest</h2>
+    <pre><code>@apiSampleRequest url</code></pre>
+    <p>Use this parameter in conjunction with the apidoc.json configuration parameter <a href="#configuration-settings-sample-url">sampleUrl</a>.</p>
+    <p>If <code>sampleUrl</code> is set, all methods will have the api test form (the endpoint from <a href="#param-api">@api</a> will be appended).<br/>Without sampleUrl only methods with <code>@apiSampleRequest</code> will have a form.</p>
+    <p>if <code>@apiSampleRequest url</code> is set in a method block, this url will be used for the request (it overrides sampleUrl when it starts with http).</p>
+    <p>If <code>sampleUrl</code> is set and you don't want a method with a test form, then add <code>@apiSampleRequest off</code> to the documentation block.
+    </p><p>Usage: <code>@apiSampleRequest http://test.github.com</code></p>
+
+    <table>
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td class="code">url</td>
+        <td>
+          Url to your test api server.<br/>
+          <br/>
+
+          Overwrite the configuration parameter sampleUrl and append <a href="#param-api">@api</a> url:<br/>
+          <code>@apiSampleRequest http://www.example.com</code><br/>
+          <br/>
+
+          Prefix the <a href="#param-api">@api</a> url:<br/>
+          <code>@apiSampleRequest /my_test_path</code><br/>
+          <br/>
+
+          Disable api test if configuration parameter sampleUrl is set:<br/>
+          <code>@apiSampleRequest off</code>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+    <p>Examples:</p>
+    <p>This will send the api request to <strong>http://api.github.com/user/:id</strong></p>
+    <pre class="example"><code>Configuration parameter sampleUrl: "http://api.github.com"
+/**
+ * @api {get} /user/:id
+ */</code></pre>
+
+    <p>This will send the api request to <strong>http://test.github.com/some_path/user/:id</strong><br/>
+    It overwrites sampleUrl.</p>
+    <pre class="example"><code>Configuration parameter sampleUrl: "http://api.github.com"
+/**
+ * @api {get} /user/:id
+ * @apiSampleRequest http://test.github.com/some_path/
+ */</code></pre>
+
+     <p>This will send the api request to <strong>http://api.github.com/test/user/:id</strong></p>
+    It extends sampleUrl.<p></p>
+    <pre class="example"><code>Configuration parameter sampleUrl: "http://api.github.com"
+/**
+ * @api {get} /user/:id
+ * @apiSampleRequest /test
+ */</code></pre>
+
+     <p>This will disable the api request for this api-method.</p>
+    <pre class="example"><code>Configuration parameter sampleUrl: "http://api.github.com"
+/**
+ * @api {get} /user/:id
+ * @apiSampleRequest off
+ */</code></pre>
+
+    <p>This will send the api request to <strong>http://api.github.com/some_path/user/:id</strong><br/>
+    It activates the request for this method only, because sampleUrl is not set.</p>
+    <pre class="example"><code>Configuration parameter sampleUrl is not set
+/**
+ * @api {get} /user/:id
+ * @apiSampleRequest http://api.github.com/some_path/
+ */</code></pre>
+  </article>
+
+<!-- ============================================================ -->
+
+    <article id="param-api-success">
+        <h2><a class="dashAnchor" name="//apple_ref/cpp/Parameter/%40apiSuccess"></a>@apiSuccess</h2>
+        <pre><code>@apiSuccess [(group)] [{type}] field [description]</code></pre>
+        <p>Success return Parameter.</p>
+        <p>Usage: <code>@apiSuccess {String} firstname Firstname of the User.</code></p>
+
+        <table>
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="code">(group)<span class="label label-optional">optional</span></td>
+                <td>
+                    All parameters will be grouped by this name.<br/>
+                    Without a group, the default <code>Success 200</code> is set.<br/>
+                    You can set a title and description with <a href="#param-api-define">@apiDefine</a>.
+                </td>
+            </tr>
+            <tr>
+                <td class="code">{type}<span class="label label-optional">optional</span></td>
+                <td>
+                    Return type, e.g. <code>{Boolean}</code>,  <code>{Number}</code>,  <code>{String}</code>,  <code>{Object}</code>, <code>{String[]}</code> (array of strings), ...
+                </td>
+            </tr>
+            <tr>
+                <td class="code">field</td>
+                <td>
+                    Return Identifier (returned success code).
+                </td>
+            </tr>
+            <tr>
+                <td class="code">description<span class="label label-optional">optional</span></td>
+                <td>
+                    Description of the field.
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <p>Example:</p>
+        <pre class="example"><code>/**
+ * @api {get} /user/:id
+ * @apiSuccess {String} firstname Firstname of the User.
+ * @apiSuccess {String} lastname  Lastname of the User.
+ */</code></pre>
+
+        <p>Example with <code>(group)</code>, more group-examples at <a href="#param-api-success-title">@apiSuccessTitle</a>:</p>
+        <pre class="example"><code>/**
+ * @api {get} /user/:id
+ * @apiSuccess (200) {String} firstname Firstname of the User.
+ * @apiSuccess (200) {String} lastname  Lastname of the User.
+ */</code></pre>
+
+        <p>Example with Object:</p>
+        <pre class="example"><code>/**
+ * @api {get} /user/:id
+ * @apiSuccess {Boolean} active        Specify if the account is active.
+ * @apiSuccess {Object}  profile       User profile information.
+ * @apiSuccess {Number}  profile.age   Users age.
+ * @apiSuccess {String}  profile.image Avatar-Image.
+ */</code></pre>
+
+        <p>Example with Array:</p>
+        <pre class="example"><code>/**
+ * @api {get} /users
+ * @apiSuccess {Object[]} profiles       List of user profiles.
+ * @apiSuccess {Number}   profiles.age   Users age.
+ * @apiSuccess {String}   profiles.image Avatar-Image.
+ */</code></pre>
+    </article>
+
+<!-- ============================================================ -->
+
+    <article id="param-api-success-example">
+        <h2><a class="dashAnchor" name="//apple_ref/cpp/Parameter/%40apiSuccessExample"></a>@apiSuccessExample</h2>
+        <pre><code>@apiSuccessExample [{type}] [title]
+                   example</code></pre>
+        <p>Example of a success return message, output as a pre-formatted code.</p>
+        <p>Usage: <code>@apiSuccessExample {json} Success-Response:<br/>                   { "content": "This is an example content" }</code></p>
+
+        <table>
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="code">type<span class="label label-optional">optional</span></td>
+                <td>
+                    Response format.
+                </td>
+            </tr>
+            <tr>
+                <td class="code">title<span class="label label-optional">optional</span></td>
+                <td>
+                    Short title for the example.
+                </td>
+            </tr>
+            <tr>
+                <td class="code">example</td>
+                <td>
+                    Detailed example, multilines capable.
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <p>Example:</p>
+        <pre class="example"><code>/**
+ * @api {get} /user/:id
+ * @apiSuccessExample {json} Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {
+ *       "firstname": "John",
+ *       "lastname": "Doe"
+ *     }
+ */</code></pre>
+    </article>
+
+<!-- ============================================================ -->
+
+    <article id="param-api-use">
+        <h2><a class="dashAnchor" name="//apple_ref/cpp/Parameter/%40apiUse"></a>@apiUse</h2>
+        <pre><code>@apiUse name</code></pre>
+        <p>Include a with <code>@apiDefine</code> defined block. If used with <code>@apiVersion</code> the same or nearest predecessor will be included.</p>
+        <p>Usage: <code>@apiUse MySuccess</code></p>
+
+        <table>
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="code">name</td>
+                <td>
+                    Name of the defined block.
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <p>Example:</p>
+        <pre class="example"><code>/**
+ * @apiDefine MySuccess
+ * @apiSuccess {string} firstname The users firstname.
+ * @apiSuccess {number} age The users age.
+ */
+
+/**
+ * @api {get} /user/:id
+ * @apiUse MySuccess
+ */</code></pre>
+    </article>
+
+<!-- ============================================================ -->
+
+    <article id="param-api-version">
+        <h2><a class="dashAnchor" name="//apple_ref/cpp/Parameter/%40apiVersion"></a>@apiVersion</h2>
+        <pre><code>@apiVersion version</code></pre>
+        <p>Set the version of an documentation block. Version can also be used in <code>@apiDefine</code>.</p>
+        <p>Blocks with same group and name, but different versions can be compared in the generated output, so you or a frontend developer can retrace what changes in the API since the last version.</p>
+        <p>Usage: <code>@apiVersion 1.6.2</code></p>
+
+        <table>
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="code">version</td>
+                <td>
+                    Simple versioning supported (major.minor.patch). More info on <a href="http://semver.org/">Semantic Versioning Specification (SemVer)</a>.
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <p>Example:</p>
+        <pre class="example"><code>/**
+ * @api {get} /user/:id
+ * @apiVersion 1.6.2
+ */</code></pre>
+        <p>For more watch <a href="#example-versioning">versioning example</a>.</p>
+    </article>
+
+<!-- ============================================================ -->
+</section>
+
+<!--
+ /* ============================================================
+  * License
+  * ============================================================ */
+-->
+<section id="license">
+    <article>
+        <h1>MIT License</h1>
+        <p>
+            <a href="https://github.com/apidoc/apidoc/blob/master/LICENSE">github.com/apidoc/apidoc/blob/master/LICENSE</a><br/>
+            Copyright (c) 2013-2015 inveris OHG<br/>
+            Author Peter Rottmann
+        </p>
+        <p><br/></p>
+
+        <p>Contact, support and error reporting on GitHub: <a href="https://github.com/apidoc/grunt-apidoc/issues">github.com/apidoc/apidoc/issues</a></p>
+    </article>
+</section>
+
+<footer class="contentinfo">
+  development is supported by <a href="http://www.inveris.de/">inveris</a> •
+  hosted on <a href="https://github.com/apidoc/apidoc">GitHub</a> •
+  distributed over <a href="https://npmjs.org/package/apidoc">npm</a>
+</footer>
+
+    </div><!-- /#content -->
+</div><!-- /#main -->
+
+</div><!-- /.container -->
+
+
+
+
+
+
+
+
+
+</body><!-- Mirrored from apidocjs.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 May 2015 20:57:38 GMT --></html>
