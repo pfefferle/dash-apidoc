@@ -17,6 +17,17 @@ To rebuild or update this docset run the following commands in the following ord
 1. `$ python rebuild.py` to generate the docset from the grabbed sources
 1. `$ sh pack.sh` to build the tgz file for a new release
 
+## Changelog
+
+### 1.0.1
+
+* updated docs
+* removed JavaScripts
+
+### 1.0.0
+
+* initial
+
 ## Thanks
 
 The [`sync.sh`][] and [`rebuild.py`][] scripts are based on [@willnorris][]' awesome [RFCDash Docset][] versions.

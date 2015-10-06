@@ -78,5 +78,15 @@ fp = open(os.path.join(DOCUMENTS_DIR, HTML_DIR, "index.html"), "w")
 fp.write(str(soup))
 fp.close()
 
+# cleanup deprecated.html
+page = open(os.path.join(DOCUMENTS_DIR, HTML_DIR, "deprecated.html")).read()
+soup = BeautifulSoup(page, 'html5lib')
+
+[t.extract() for t in soup("script")]
+
+fp = open(os.path.join(DOCUMENTS_DIR, HTML_DIR, "deprecated.html"), "w")
+fp.write(str(soup))
+fp.close()
+
 db.commit()
 db.close()
