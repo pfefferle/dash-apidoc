@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<!-- Mirrored from apidocjs.com/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 06 Oct 2015 07:20:56 GMT -->
+<!-- Mirrored from apidocjs.com/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 22 Jun 2016 19:52:05 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
     <title>apiDoc - Inline Documentation for RESTful web APIs</title>
@@ -36,6 +36,7 @@
             <ul class="resp-tabs-list">
                 <li title="C#, Go, Dart, Java, JavaScript, PHP, TypeScript (all DocStyle capable languages)">Java, JavaScript, PHP, ...</li>
                 <li title="CoffeeScript">CoffeeScript</li>
+                <li title="Elixir">Elixir</li>
                 <li title="Erlang">Erlang</li>
                 <li title="Perl">Perl</li>
                 <li title="Python">Python</li>
@@ -68,6 +69,20 @@
 @apiSuccess {String} firstname Firstname of the User.
 @apiSuccess {String} lastname  Lastname of the User.
 ###</code></pre>
+                </div>
+
+                <!-- Tab Elixir -->
+                <div>
+                    <pre class="example"><code>@apidoc """
+@api {get} /user/:id Request User information
+@apiName GetUser
+@apiGroup User
+
+@apiParam {Number} id Users unique ID.
+
+@apiSuccess {String} firstname Firstname of the User.
+@apiSuccess {String} lastname  Lastname of the User.
+"""</code></pre>
                 </div>
 
                 <!-- Tab Erlang -->
@@ -230,6 +245,11 @@
 This is a comment.
 ###</code></pre>
 
+        <p>Elixir</p>
+        <pre class="example"><code>@apidoc """
+This is a comment.
+"""</code></pre>
+
         <p>Erlang (% within the comment is optional)</p>
         <pre class="example"><code>%{
 % This is a comment.
@@ -374,7 +394,7 @@ This is a comment.
   "description": "apiDoc basic example",
   "apidoc": {
     "title": "Custom apiDoc browser title",
-    "url" : "https://api.github.com/v1",
+    "url" : "https://api.github.com/v1"
   }
 }</code></pre>
 
@@ -438,7 +458,7 @@ This is a comment.
 
       <tr>
         <td class="code">order</td>
-        <td>A list of api-names / group-names for ordering the output. Not defined names are automatically displayd last.<br>
+        <td>A list of api-names / group-names for ordering the output. Not defined names are automatically displayed last.<br>
 <pre><code>"order": [
   "Error",
   "Define",
@@ -738,13 +758,12 @@ This is a comment.
 
     <article id="example-full">
         <h2>Full example (all together)</h2>
-        <p>This is a complex example with <code>inherit</code>, <code>versioning</code>, <code>API.md</code> file and history file <code>_apidoc.js</code>, explanation is within code and generated documentation.</p>
+        <p>This is a complex example with <code>inherit</code>, <code>versioning</code> file and history file <code>_apidoc.js</code>, explanation is within code and generated documentation.</p>
         <p><a href="example/index.html">View example output</a></p>
         <p><br></p>
         <p>Files:</p>
         <ul>
             <li><a href="source/example_full/_apidoc.js">_apidoc.js</a></li>
-            <li><a href="source/example_full/API.html">API.md</a></li>
             <li><a href="source/example_full/example.js">example.js</a></li>
             <li><a href="source/example_full/apidoc.json">apidoc.json</a></li>
         </ul>
@@ -1801,5 +1820,5 @@ $(document).ready(function() {
 </script>
 </body>
 
-<!-- Mirrored from apidocjs.com/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 06 Oct 2015 07:20:56 GMT -->
+<!-- Mirrored from apidocjs.com/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 22 Jun 2016 19:52:05 GMT -->
 </html>
